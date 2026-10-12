@@ -1,0 +1,456 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    ```
+    <title>IT Help Desk - Login</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #3d2d6e, #5b439b, #7662b3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 1000px;
+            min-height: 620px;
+            background: white;
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+            display: flex;
+        }
+
+        /* LEFT SIDE */
+
+        .login-left {
+            width: 45%;
+            background: linear-gradient(160deg, #3d2d6e, #5b439b);
+            color: white;
+            padding: 60px 45px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .logo {
+            width: 65px;
+            height: 65px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin-bottom: 30px;
+        }
+
+        .login-left h1 {
+            font-size: 34px;
+            margin-bottom: 15px;
+        }
+
+        .login-left p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.82);
+        }
+
+        .features {
+            margin-top: 35px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            margin-bottom: 18px;
+            font-size: 14px;
+        }
+
+            .feature i {
+                width: 30px;
+                height: 30px;
+                background: rgba(255, 255, 255, 0.14);
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+        /* RIGHT SIDE */
+
+        .login-right {
+            width: 55%;
+            padding: 55px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+            .login-right h2 {
+                font-size: 30px;
+                color: #2d2938;
+                margin-bottom: 8px;
+            }
+
+        .subtitle {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+            .form-group label {
+                display: block;
+                font-size: 13px;
+                font-weight: 600;
+                color: #444;
+                margin-bottom: 8px;
+            }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+            .input-wrapper i.input-icon {
+                position: absolute;
+                left: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+                color: #8b7ab8;
+            }
+
+            .input-wrapper input {
+                width: 100%;
+                height: 52px;
+                border: 1px solid #ddd;
+                border-radius: 10px;
+                padding: 0 45px;
+                font-size: 14px;
+                outline: none;
+            }
+
+                .input-wrapper input:focus {
+                    border-color: #5b439b;
+                    box-shadow: 0 0 0 3px rgba(91, 67, 155, 0.12);
+                }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 13px;
+        }
+
+        .remember {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            color: #555;
+        }
+
+            .remember input {
+                accent-color: #5b439b;
+            }
+
+        .forgot {
+            color: #5b439b;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+            .forgot:hover {
+                text-decoration: underline;
+            }
+
+        /* SIGN IN BUTTON */
+
+        .login-button {
+            width: 100%;
+            height: 52px;
+            border-radius: 10px;
+            background: #5b439b;
+            color: white;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+            .login-button:hover {
+                background: #493681;
+            }
+
+        /* DEMO BUTTON */
+
+        .demo-button {
+            width: 100%;
+            height: 50px;
+            margin-top: 12px;
+            border: 1px solid #d9d2ec;
+            border-radius: 10px;
+            background: #f8f6fc;
+            color: #5b439b;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+            .demo-button:hover {
+                background: #eee9f8;
+            }
+
+            .demo-button i {
+                margin-right: 7px;
+            }
+
+        /* DEMO INFORMATION */
+
+        .demo-info {
+            margin-top: 25px;
+            padding: 14px;
+            background: #f6f4fa;
+            border-radius: 10px;
+            font-size: 12px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+            .demo-info strong {
+                color: #5b439b;
+            }
+
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            .login-container {
+                flex-direction: column;
+                max-width: 500px;
+            }
+
+            .login-left,
+            .login-right {
+                width: 100%;
+            }
+
+            .login-left {
+                padding: 35px;
+            }
+
+                .login-left h1 {
+                    font-size: 28px;
+                }
+
+            .features {
+                display: none;
+            }
+
+            .login-right {
+                padding: 35px;
+            }
+        }
+    </style>
+    ```
+
+</head>
+
+<body>
+
+    ```
+    <div class="login-container">
+
+        <!-- LEFT SIDE -->
+
+        <div class="login-left">
+
+            <div class="logo">
+                <i class="fa-solid fa-headset"></i>
+            </div>
+
+            <h1>IT Help Desk</h1>
+
+            <p>
+                Manage support tickets, technicians, assets and users
+                from one professional help desk system.
+            </p>
+
+            <div class="features">
+
+                <div class="feature">
+                    <i class="fa-solid fa-ticket"></i>
+                    <span>Manage support tickets</span>
+                </div>
+
+                <div class="feature">
+                    <i class="fa-solid fa-users"></i>
+                    <span>Assign tickets to technicians</span>
+                </div>
+
+                <div class="feature">
+                    <i class="fa-solid fa-laptop"></i>
+                    <span>Track IT assets</span>
+                </div>
+
+                <div class="feature">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Monitor help desk performance</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE -->
+
+        <div class="login-right">
+
+            <h2>Welcome Back</h2>
+
+            <p class="subtitle">
+                Sign in to access your IT Help Desk dashboard.
+            </p>
+
+            <!-- EMAIL -->
+
+            <div class="form-group">
+
+                <label for="email">
+                    Email Address
+                </label>
+
+                <div class="input-wrapper">
+
+                    <i class="fa-solid fa-envelope input-icon"></i>
+
+                    <input type="email"
+                           id="email"
+                           placeholder="Enter your email">
+
+                </div>
+
+            </div>
+
+            <!-- PASSWORD -->
+
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <div class="input-wrapper">
+
+                    <i class="fa-solid fa-lock input-icon"></i>
+
+                    <input type="password"
+                           id="password"
+                           placeholder="Enter your password">
+
+                </div>
+
+            </div>
+
+            <!-- OPTIONS -->
+
+            <div class="form-options">
+
+                <label class="remember">
+
+                    <input type="checkbox">
+
+                    Remember me
+
+                </label>
+
+                <a href="#" class="forgot">
+                    Forgot password?
+                </a>
+
+            </div>
+
+            <!-- SIGN IN -->
+
+            <a href="./dashboard1.html" class="login-button">
+                Sign In
+            </a>
+
+            <!-- DEMO ACCOUNT -->
+
+            <a href="./dashboard1.html" class="demo-button">
+                <i class="fa-solid fa-user"></i>
+                Use Demo Account
+            </a>
+
+            <!-- DEMO DETAILS -->
+
+            <div class="demo-info">
+
+                <strong>Demo Account</strong><br>
+
+                Email:
+                <strong>admin@itsupport.com</strong><br>
+
+                Password:
+                <strong>Admin123</strong>
+
+            </div>
+
+            <!-- FOOTER -->
+
+            <div class="footer">
+
+                IT Help Desk Management System
+
+            </div>
+
+        </div>
+
+    </div>
+    ```
+
+</body>
+</html>

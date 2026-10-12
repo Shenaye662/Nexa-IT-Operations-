@@ -1,0 +1,1641 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>IT Help Desk - Dashboard</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <style>
+
+        /* =========================================
+           GENERAL
+        ========================================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Inter", Arial, sans-serif;
+            background: #f5f6fa;
+            color: #2d2d37;
+        }
+
+
+        /* =========================================
+           SIDEBAR
+        ========================================= */
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 250px;
+            background: #3d2d6e;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            z-index: 100;
+        }
+
+
+        /* BRAND */
+
+        .brand {
+            height: 85px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0 22px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+
+        .brand-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 11px;
+            background: white;
+            color: #5b439b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+
+        .brand-text h2 {
+            margin: 0;
+            font-size: 16px;
+        }
+
+
+        .brand-text span {
+            font-size: 10px;
+            color: rgba(255,255,255,0.6);
+        }
+
+
+        /* NAVIGATION */
+
+        .navigation {
+            padding: 25px 14px;
+            flex: 1;
+        }
+
+
+        .nav-title {
+            margin: 0 12px 10px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: rgba(255,255,255,0.4);
+        }
+
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            padding: 12px 14px;
+            margin-bottom: 5px;
+            border-radius: 8px;
+            color: rgba(255,255,255,0.72);
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+
+            .nav-item i {
+                width: 18px;
+                text-align: center;
+            }
+
+
+            .nav-item:hover {
+                background: rgba(255,255,255,0.1);
+                color: white;
+            }
+
+
+            .nav-item.active {
+                background: #5b439b;
+                color: white;
+            }
+
+
+        /* SIDEBAR USER */
+
+        .sidebar-bottom {
+            padding: 15px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+
+        .sidebar-user {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+
+        .avatar {
+            width: 37px;
+            height: 37px;
+            border-radius: 50%;
+            background: #8068b8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+
+        .sidebar-user strong {
+            display: block;
+            font-size: 11px;
+        }
+
+
+        .sidebar-user span {
+            display: block;
+            font-size: 9px;
+            margin-top: 2px;
+            color: rgba(255,255,255,0.55);
+        }
+
+
+        /* =========================================
+           MAIN AREA
+        ========================================= */
+
+        .main {
+            margin-left: 250px;
+            min-height: 100vh;
+        }
+
+
+        /* =========================================
+           TOP BAR
+        ========================================= */
+
+        .topbar {
+            height: 75px;
+            background: white;
+            border-bottom: 1px solid #e5e5eb;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+        }
+
+
+            .topbar h1 {
+                margin: 0;
+                font-size: 20px;
+            }
+
+
+            .topbar p {
+                margin: 5px 0 0;
+                color: #858592;
+                font-size: 11px;
+            }
+
+
+        .top-actions {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+
+
+        .icon-button {
+            width: 37px;
+            height: 37px;
+            border: 1px solid #e4e4e9;
+            background: white;
+            border-radius: 8px;
+            color: #555560;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+
+            .icon-button:hover {
+                background: #f5f2fa;
+                color: #5b439b;
+            }
+
+
+        .top-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #5b439b;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+
+        /* =========================================
+           PAGE
+        ========================================= */
+
+        .page {
+            padding: 28px 30px;
+        }
+
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 22px;
+        }
+
+
+            .page-header h2 {
+                margin: 0;
+                font-size: 19px;
+            }
+
+
+            .page-header p {
+                margin: 5px 0 0;
+                color: #858592;
+                font-size: 11px;
+            }
+
+
+        /* =========================================
+           WELCOME BANNER
+        ========================================= */
+
+        .welcome {
+            background: linear-gradient( 135deg, #5b439b, #7158b3 );
+            color: white;
+            border-radius: 12px;
+            padding: 22px 25px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            overflow: hidden;
+        }
+
+
+            .welcome h2 {
+                margin: 0 0 7px;
+                font-size: 19px;
+            }
+
+
+            .welcome p {
+                margin: 0;
+                font-size: 11px;
+                color: rgba(255,255,255,0.75);
+            }
+
+
+        .welcome-icon {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+        }
+
+
+        /* =========================================
+           STATISTICS
+        ========================================= */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+
+        .stat-card {
+            background: white;
+            border: 1px solid #e7e7ec;
+            border-radius: 11px;
+            padding: 17px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        .stat-title {
+            font-size: 10px;
+            text-transform: uppercase;
+            color: #888894;
+            font-weight: 600;
+        }
+
+
+        .stat-number {
+            margin-top: 7px;
+            font-size: 25px;
+            font-weight: 800;
+            color: #34343d;
+        }
+
+
+        .stat-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+
+        .purple-icon {
+            background: #eee9f8;
+            color: #5b439b;
+        }
+
+
+        .orange-icon {
+            background: #fff1dc;
+            color: #c17a1b;
+        }
+
+
+        .blue-icon {
+            background: #e8f0ff;
+            color: #3e70c6;
+        }
+
+
+        .green-icon {
+            background: #e6f5eb;
+            color: #34875a;
+        }
+
+
+        /* =========================================
+           CONTENT GRID
+        ========================================= */
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+
+
+        .card {
+            background: white;
+            border: 1px solid #e7e7ec;
+            border-radius: 11px;
+            overflow: hidden;
+        }
+
+
+        .card-header {
+            padding: 17px 18px;
+            border-bottom: 1px solid #eeeef2;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+            .card-header h3 {
+                margin: 0;
+                font-size: 13px;
+            }
+
+
+        .view-all {
+            text-decoration: none;
+            color: #5b439b;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+
+            .view-all:hover {
+                text-decoration: underline;
+            }
+
+
+        /* =========================================
+           TICKET TABLE
+        ========================================= */
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+
+        th {
+            background: #fafafd;
+            color: #888894;
+            text-align: left;
+            font-size: 9px;
+            text-transform: uppercase;
+            padding: 12px 15px;
+        }
+
+
+        td {
+            padding: 13px 15px;
+            border-top: 1px solid #eeeef2;
+            font-size: 10px;
+        }
+
+
+        .ticket-id {
+            color: #5b439b;
+            font-weight: 700;
+        }
+
+
+        .issue {
+            font-weight: 600;
+            color: #383842;
+        }
+
+
+        .assigned {
+            color: #5b439b;
+            font-weight: 600;
+        }
+
+
+        /* =========================================
+           BADGES
+        ========================================= */
+
+        .badge {
+            display: inline-block;
+            padding: 5px 8px;
+            border-radius: 20px;
+            font-size: 8px;
+            font-weight: 700;
+        }
+
+
+        .critical {
+            background: #fde5e5;
+            color: #c43c3c;
+        }
+
+
+        .high {
+            background: #fff0da;
+            color: #b87315;
+        }
+
+
+        .medium {
+            background: #e8f0ff;
+            color: #3d70c5;
+        }
+
+
+        .low {
+            background: #e5f5eb;
+            color: #328659;
+        }
+
+
+        .open {
+            background: #fff0d8;
+            color: #b77a16;
+        }
+
+
+        .progress {
+            background: #e7efff;
+            color: #3d70c5;
+        }
+
+
+        .resolved {
+            background: #e5f5eb;
+            color: #328659;
+        }
+
+
+        /* =========================================
+           QUICK ACTIONS
+        ========================================= */
+
+        .quick-actions {
+            padding: 15px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+
+        .quick-action {
+            text-decoration: none;
+            background: #fafafd;
+            border: 1px solid #e8e8ed;
+            border-radius: 9px;
+            padding: 15px 10px;
+            text-align: center;
+            color: #44444e;
+        }
+
+
+            .quick-action:hover {
+                background: #f3effb;
+                border-color: #dcd1ef;
+                color: #5b439b;
+            }
+
+
+            .quick-action i {
+                display: block;
+                font-size: 18px;
+                margin-bottom: 8px;
+                color: #5b439b;
+            }
+
+
+            .quick-action span {
+                font-size: 9px;
+                font-weight: 600;
+            }
+
+
+        /* =========================================
+           SYSTEM STATUS
+        ========================================= */
+
+        .status-list {
+            padding: 5px 18px 15px;
+        }
+
+
+        .status-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #eeeef2;
+        }
+
+
+            .status-row:last-child {
+                border-bottom: none;
+            }
+
+
+        .status-name {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #42a866;
+        }
+
+
+        .status-online {
+            font-size: 9px;
+            color: #42a866;
+            font-weight: 600;
+        }
+
+
+        /* =========================================
+           INFORMATION BOX
+        ========================================= */
+
+        .info-box {
+            margin-top: 20px;
+            background: #f3effb;
+            border: 1px solid #ded5ef;
+            border-radius: 10px;
+            padding: 15px 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+
+        .info-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #5b439b;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+
+        .info-box strong {
+            display: block;
+            font-size: 11px;
+            margin-bottom: 3px;
+        }
+
+
+        .info-box span {
+            color: #777783;
+            font-size: 10px;
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media (max-width: 1100px) {
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        @media (max-width: 800px) {
+
+            .sidebar {
+                width: 70px;
+            }
+
+
+            .brand {
+                justify-content: center;
+                padding: 0;
+            }
+
+
+            .brand-text,
+            .nav-title,
+            .nav-item span,
+            .sidebar-user div:not(.avatar) {
+                display: none;
+            }
+
+
+            .nav-item {
+                justify-content: center;
+            }
+
+
+            .main {
+                margin-left: 70px;
+            }
+
+
+            .topbar {
+                padding: 0 20px;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            .page {
+                padding: 20px 15px;
+            }
+
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+
+            .welcome {
+                padding: 18px;
+            }
+
+
+            .welcome-icon {
+                width: 55px;
+                height: 55px;
+                font-size: 22px;
+            }
+
+
+            .welcome h2 {
+                font-size: 16px;
+            }
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         SIDEBAR
+    ========================================== -->
+
+    <aside class="sidebar">
+
+
+        <!-- BRAND -->
+
+        <div class="brand">
+
+            <div class="brand-icon">
+
+                <i class="fa-solid fa-headset"></i>
+
+            </div>
+
+
+            <div class="brand-text">
+
+                <h2>IT Help Desk</h2>
+
+                <span>Management System</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="navigation">
+
+
+            <p class="nav-title">
+                Main Menu
+            </p>
+
+
+            <a href="dashboard.html"
+               class="nav-item active">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <a href="ticket1.html"
+               class="nav-item">
+
+                <i class="fa-solid fa-ticket"></i>
+
+                <span>
+                    Tickets
+                </span>
+
+            </a>
+
+
+            <a href="assets.html"
+               class="nav-item">
+
+                <i class="fa-solid fa-laptop"></i>
+
+                <span>
+                    IT Assets
+                </span>
+
+            </a>
+
+
+            <a href="technicians.html"
+               class="nav-item">
+
+                <i class="fa-solid fa-user-gear"></i>
+
+                <span>
+                    Technicians
+                </span>
+
+            </a>
+
+
+            <a href="users.html"
+               class="nav-item">
+
+                <i class="fa-solid fa-users"></i>
+
+                <span>
+                    Users
+                </span>
+
+            </a>
+
+
+            <p class="nav-title"
+               style="margin-top:25px;">
+
+                Management
+
+            </p>
+
+
+            <a href="reports.html"
+               class="nav-item">
+
+                <i class="fa-solid fa-chart-pie"></i>
+
+                <span>
+                    Reports
+                </span>
+
+            </a>
+
+
+            <a href="settings.html"
+               class="nav-item">
+
+                <i class="fa-solid fa-gear"></i>
+
+                <span>
+                    Settings
+                </span>
+
+            </a>
+
+
+        </nav>
+
+
+        <!-- SIDEBAR USER -->
+
+        <div class="sidebar-bottom">
+
+            <div class="sidebar-user">
+
+
+                <div class="avatar">
+                    AD
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Admin User
+                    </strong>
+
+                    <span>
+                        Administrator
+                    </span>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+    </aside>
+
+
+    <!-- =========================================
+         MAIN
+    ========================================== -->
+
+    <main class="main">
+
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+
+            <div>
+
+                <h1>
+                    Dashboard
+                </h1>
+
+                <p>
+                    IT Help Desk Management System
+                </p>
+
+            </div>
+
+
+            <div class="top-actions">
+
+
+                <button class="icon-button"
+                        type="button"
+                        title="Notifications">
+
+                    <i class="fa-regular fa-bell"></i>
+
+                </button>
+
+
+                <a href="dashboard.html"
+                   class="icon-button"
+                   title="Home">
+
+                    <i class="fa-solid fa-house"></i>
+
+                </a>
+
+
+                <div class="top-avatar">
+                    AD
+                </div>
+
+
+            </div>
+
+
+        </header>
+
+
+        <!-- PAGE -->
+
+        <section class="page">
+
+
+            <!-- PAGE HEADER -->
+
+            <div class="page-header">
+
+
+                <div>
+
+                    <h2>
+                        Overview
+                    </h2>
+
+                    <p>
+                        Monitor your IT support environment
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =========================================
+                 WELCOME BANNER
+            ========================================== -->
+
+            <div class="welcome">
+
+
+                <div>
+
+                    <h2>
+                        Welcome back, Admin! 👋
+                    </h2>
+
+                    <p>
+                        Here's what's happening with your IT support system today.
+                    </p>
+
+                </div>
+
+
+                <div class="welcome-icon">
+
+                    <i class="fa-solid fa-headset"></i>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =========================================
+                 STATISTICS
+            ========================================== -->
+
+            <div class="stats">
+
+
+                <!-- TOTAL -->
+
+                <div class="stat-card">
+
+
+                    <div>
+
+                        <div class="stat-title">
+                            Total Tickets
+                        </div>
+
+                        <div class="stat-number">
+                            48
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-icon purple-icon">
+
+                        <i class="fa-solid fa-ticket"></i>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- OPEN -->
+
+                <div class="stat-card">
+
+
+                    <div>
+
+                        <div class="stat-title">
+                            Open Tickets
+                        </div>
+
+                        <div class="stat-number">
+                            12
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-icon orange-icon">
+
+                        <i class="fa-solid fa-folder-open"></i>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- IN PROGRESS -->
+
+                <div class="stat-card">
+
+
+                    <div>
+
+                        <div class="stat-title">
+                            In Progress
+                        </div>
+
+                        <div class="stat-number">
+                            8
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-icon blue-icon">
+
+                        <i class="fa-solid fa-spinner"></i>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- RESOLVED -->
+
+                <div class="stat-card">
+
+
+                    <div>
+
+                        <div class="stat-title">
+                            Resolved
+                        </div>
+
+                        <div class="stat-number">
+                            28
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-icon green-icon">
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =========================================
+                 CONTENT GRID
+            ========================================== -->
+
+            <div class="content-grid">
+
+
+                <!-- =====================================
+                     RECENT TICKETS
+                ====================================== -->
+
+                <div class="card">
+
+
+                    <div class="card-header">
+
+
+                        <h3>
+                            Recent Tickets
+                        </h3>
+
+
+                        <a href="ticket1.html"
+                           class="view-all">
+
+                            View All
+
+                        </a>
+
+
+                    </div>
+
+
+                    <div class="table-container">
+
+
+                        <table>
+
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        Ticket
+                                    </th>
+
+                                    <th>
+                                        Issue
+                                    </th>
+
+                                    <th>
+                                        Priority
+                                    </th>
+
+                                    <th>
+                                        Status
+                                    </th>
+
+                                    <th>
+                                        Assigned
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody>
+
+
+                                <!-- TICKET 1 -->
+
+                                <tr>
+
+                                    <td class="ticket-id">
+                                        #1048
+                                    </td>
+
+                                    <td class="issue">
+                                        Laptop Wi-Fi issue
+                                    </td>
+
+                                    <td>
+
+                                        <span class="badge critical">
+                                            Critical
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        <span class="badge open">
+                                            Open
+                                        </span>
+
+                                    </td>
+
+                                    <td class="assigned">
+                                        James Daniels
+                                    </td>
+
+                                </tr>
+
+
+                                <!-- TICKET 2 -->
+
+                                <tr>
+
+                                    <td class="ticket-id">
+                                        #1047
+                                    </td>
+
+                                    <td class="issue">
+                                        Outlook not syncing
+                                    </td>
+
+                                    <td>
+
+                                        <span class="badge medium">
+                                            Medium
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        <span class="badge progress">
+                                            In Progress
+                                        </span>
+
+                                    </td>
+
+                                    <td class="assigned">
+                                        Sarah Mitchell
+                                    </td>
+
+                                </tr>
+
+
+                                <!-- TICKET 3 -->
+
+                                <tr>
+
+                                    <td class="ticket-id">
+                                        #1046
+                                    </td>
+
+                                    <td class="issue">
+                                        Printer not responding
+                                    </td>
+
+                                    <td>
+
+                                        <span class="badge high">
+                                            High
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        <span class="badge open">
+                                            Open
+                                        </span>
+
+                                    </td>
+
+                                    <td class="assigned">
+                                        Neil Kumar
+                                    </td>
+
+                                </tr>
+
+
+                                <!-- TICKET 4 -->
+
+                                <tr>
+
+                                    <td class="ticket-id">
+                                        #1045
+                                    </td>
+
+                                    <td class="issue">
+                                        Password reset
+                                    </td>
+
+                                    <td>
+
+                                        <span class="badge medium">
+                                            Medium
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        <span class="badge resolved">
+                                            Resolved
+                                        </span>
+
+                                    </td>
+
+                                    <td class="assigned">
+                                        James Daniels
+                                    </td>
+
+                                </tr>
+
+
+                            </tbody>
+
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================
+                     RIGHT COLUMN
+                ====================================== -->
+
+                <div>
+
+
+                    <!-- QUICK ACTIONS -->
+
+                    <div class="card">
+
+
+                        <div class="card-header">
+
+                            <h3>
+                                Quick Actions
+                            </h3>
+
+                        </div>
+
+
+                        <div class="quick-actions">
+
+
+                            <a href="ticket1.html"
+                               class="quick-action">
+
+                                <i class="fa-solid fa-plus"></i>
+
+                                <span>
+                                    New Ticket
+                                </span>
+
+                            </a>
+
+
+                            <a href="ticket1.html"
+                               class="quick-action">
+
+                                <i class="fa-solid fa-ticket"></i>
+
+                                <span>
+                                    View Tickets
+                                </span>
+
+                            </a>
+
+
+                            <a href="assets.html"
+                               class="quick-action">
+
+                                <i class="fa-solid fa-laptop"></i>
+
+                                <span>
+                                    IT Assets
+                                </span>
+
+                            </a>
+
+
+                            <a href="users.html"
+                               class="quick-action">
+
+                                <i class="fa-solid fa-user-plus"></i>
+
+                                <span>
+                                    Users
+                                </span>
+
+                            </a>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- SYSTEM STATUS -->
+
+                    <div class="card"
+                         style="margin-top:20px;">
+
+
+                        <div class="card-header">
+
+                            <h3>
+                                System Status
+                            </h3>
+
+                        </div>
+
+
+                        <div class="status-list">
+
+
+                            <div class="status-row">
+
+
+                                <div class="status-name">
+
+                                    <span class="status-dot"></span>
+
+                                    Help Desk
+
+                                </div>
+
+
+                                <span class="status-online">
+                                    Online
+                                </span>
+
+
+                            </div>
+
+
+                            <div class="status-row">
+
+
+                                <div class="status-name">
+
+                                    <span class="status-dot"></span>
+
+                                    Ticket System
+
+                                </div>
+
+
+                                <span class="status-online">
+                                    Online
+                                </span>
+
+
+                            </div>
+
+
+                            <div class="status-row">
+
+
+                                <div class="status-name">
+
+                                    <span class="status-dot"></span>
+
+                                    IT Assets
+
+                                </div>
+
+
+                                <span class="status-online">
+                                    Online
+                                </span>
+
+
+                            </div>
+
+
+                            <div class="status-row">
+
+
+                                <div class="status-name">
+
+                                    <span class="status-dot"></span>
+
+                                    Database
+
+                                </div>
+
+
+                                <span class="status-online">
+                                    Online
+                                </span>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =========================================
+                 INFORMATION
+            ========================================== -->
+
+            <div class="info-box">
+
+
+                <div class="info-icon">
+
+                    <i class="fa-solid fa-circle-info"></i>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Help Desk Overview
+                    </strong>
+
+                    <span>
+                        Use the navigation menu to manage support tickets,
+                        IT assets, technicians and users.
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+</body>
+
+</html>

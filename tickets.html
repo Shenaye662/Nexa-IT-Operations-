@@ -1,0 +1,182 @@
+﻿    <!-- Your page content above this -->
+
+<script>
+
+            function openModal() {
+                const modal = document.getElementById("ticketModal");
+                if (!modal) return;
+                modal.classList.add("show");
+            }
+
+            function closeModal() {
+                const modal = document.getElementById("ticketModal");
+                if (!modal) return;
+                modal.classList.remove("show");
+            }
+
+            function createTicket(event) {
+
+                event.preventDefault();
+
+                const reportedByEl = document.getElementById("reportedBy") as (HTMLInputElement | null);
+                const issueEl = document.getElementById("issue") as (HTMLInputElement | null);
+                const priorityEl = document.getElementById("priority") as (HTMLSelectElement | null);
+                const assignedToEl = document.getElementById("assignedTo") as (HTMLInputElement | null);
+
+                const issue =
+                    document.getElementById("issue").value;
+
+                const priority =
+                    document.getElementById("priority").value;
+
+                const assignedTo =
+                    document.getElementById("assignedTo").value;
+
+                if (!reportedBy || !issue || !priority || !assignedTo) {
+                    alert("Please complete all required fields.");
+                    return;
+                }
+
+                const reportedBy = reportedByEl.value;
+                const issue = issueEl.value;
+                const priority = priorityEl.value;
+                const assignedTo = assignedToEl.value;
+
+                let ticketNumber = 1049 + document.querySelectorAll("#ticketTable tr").length;
+
+                const priorityName = priority.charAt(0).toUpperCase() + priority.slice(1);
+
+                const newRow = document.createElement("tr");
+
+                newRow.setAttribute("data-status", "open");
+                newRow.setAttribute("data-priority", priority);
+
+                newRow.innerHTML = `
+                    <td class="ticket-id">
+                        #${ticketNumber}
+                    </td>
+
+                    <td class="issue">
+                        ${issue}
+                    </td>
+
+                    <td class="reported">
+                        ${reportedBy}
+                    </td>
+
+                    <td>
+                        <span class="badge ${priority}">
+                            ${priorityName}
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="badge open">
+                            Open
+                        </span>
+                    </td>
+
+                    <td class="assign">
+                        ${assignedTo}
+                    </td>
+
+                    <td class="actions">
+                        <button title="View">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+
+                        <button title="Edit">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+                    </td>
+                `;
+
+                const table = document.getElementById("ticketTable");
+                if (!table) {
+                    alert("Ticket table not found.");
+                    return;
+                }
+
+                table.appendChild(newRow);
+
+                updateStatistics();
+
+                const form = document.querySelector(".form") as (HTMLFormElement | null);
+                if (form) form.reset();
+
+                closeModal();
+
+                alert("Ticket #" + ticketNumber + " created successfully!");
+            }
+
+            function filterTickets() {
+
+                const searchInput = document.getElementById("searchInput") as (HTMLInputElement | null);
+                const search = searchInput ? searchInput.value.toLowerCase() : "";
+
+                const statusEl = document.getElementById("statusFilter") as (HTMLSelectElement | null);
+                const status = statusEl ? statusEl.value : "all";
+
+                const priorityEl = document.getElementById("priorityFilter") as (HTMLSelectElement | null);
+                const priority = priorityEl ? priorityEl.value : "all";
+
+                const rows = document.querySelectorAll("#ticketTable tr");
+
+                rows.forEach(row => {
+
+                    const text = row.innerText.toLowerCase();
+
+                    const rowStatus = row.getAttribute("data-status");
+                    const rowPriority = row.getAttribute("data-priority");
+
+                    const matchesSearch = text.includes(search);
+
+                    const matchesStatus = status === "all" || rowStatus === status;
+
+                    const matchesPriority = priority === "all" || rowPriority === priority;
+
+                    if (matchesSearch && matchesStatus && matchesPriority) {
+                        row.style.display = "";
+                    } else {
+                        row.style.display = "none";
+                    }
+
+                });
+            }
+
+            function updateStatistics() {
+
+                const rows = document.querySelectorAll("#ticketTable tr");
+
+                let open = 0;
+                let progress = 0;
+                let resolved = 0;
+
+                rows.forEach(row => {
+                    const status = row.getAttribute("data-status");
+                    if (status === "open") open++;
+                    if (status === "progress") progress++;
+                    if (status === "resolved") resolved++;
+                });
+
+                const openEl = document.getElementById("openTickets");
+                if (openEl) openEl.textContent = String(open);
+
+                const progressEl = document.getElementById("progressTickets");
+                if (progressEl) progressEl.textContent = String(progress);
+
+                const resolvedEl = document.getElementById("resolvedTickets");
+                if (resolvedEl) resolvedEl.textContent = String(resolved);
+
+                const totalEl = document.getElementById("totalTickets");
+                if (totalEl) totalEl.textContent = String(rows.length);y
+            }
+
+
+
+}
+
+</script>
+
+</body>
+</html>

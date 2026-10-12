@@ -1,0 +1,653 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>IT Help Desk - Create Account</title>
+
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Inter", Arial, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient( 135deg, #3d2d6e, #5b439b, #8069b8 );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 25px;
+            color: #2d2d37;
+        }
+
+        .register-wrapper {
+            width: 100%;
+            max-width: 1050px;
+            min-height: 650px;
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.25);
+        }
+
+        /* LEFT */
+
+        .brand-panel {
+            background: linear-gradient( 145deg, #3d2d6e, #5b439b );
+            color: white;
+            padding: 55px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .brand-panel::before {
+                content: "";
+                position: absolute;
+                width: 300px;
+                height: 300px;
+                border-radius: 50%;
+                background: rgba(255,255,255,0.06);
+                top: -100px;
+                right: -100px;
+            }
+
+            .brand-panel::after {
+                content: "";
+                position: absolute;
+                width: 220px;
+                height: 220px;
+                border-radius: 50%;
+                background: rgba(255,255,255,0.05);
+                bottom: -80px;
+                left: -80px;
+            }
+
+        .brand-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            width: 70px;
+            height: 70px;
+            border-radius: 18px;
+            background: rgba(255,255,255,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin-bottom: 28px;
+        }
+
+        .brand-panel h1 {
+            font-size: 34px;
+            line-height: 1.2;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+            .brand-panel h1 span {
+                display: block;
+                color: #ddd5f3;
+            }
+
+        .brand-description {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #e7e1f3;
+            max-width: 400px;
+            margin-bottom: 35px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            margin-bottom: 18px;
+            font-size: 14px;
+        }
+
+        .feature-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* RIGHT */
+
+        .form-panel {
+            padding: 45px 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .form-header {
+            margin-bottom: 25px;
+        }
+
+            .form-header h2 {
+                font-size: 29px;
+                font-weight: 800;
+                color: #272633;
+                margin-bottom: 8px;
+            }
+
+            .form-header p {
+                color: #777783;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #3b3b47;
+            margin-bottom: 8px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9999a5;
+            pointer-events: none;
+        }
+
+        .form-input {
+            width: 100%;
+            height: 50px;
+            border: 1px solid #dedee6;
+            border-radius: 11px;
+            padding: 0 45px;
+            font-family: inherit;
+            font-size: 14px;
+            color: #292936;
+            background: #fafafd;
+            outline: none;
+        }
+
+            .form-input:focus {
+                border-color: #5b439b;
+                background: white;
+                box-shadow: 0 0 0 4px rgba(91,67,155,0.1);
+            }
+
+        .password-toggle {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            background: transparent;
+            color: #9999a5;
+            cursor: pointer;
+            padding: 6px;
+        }
+
+            .password-toggle:hover {
+                color: #5b439b;
+            }
+
+        .primary-button {
+            width: 100%;
+            height: 51px;
+            border: none;
+            border-radius: 11px;
+            background: linear-gradient( 135deg, #4d3785, #6b50a8 );
+            color: white;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+            .primary-button:hover {
+                transform: translateY(-1px);
+            }
+
+            .primary-button:disabled {
+                opacity: 0.7;
+                cursor: not-allowed;
+            }
+
+        .message {
+            display: none;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 14px;
+            border-radius: 10px;
+            margin-bottom: 18px;
+            font-size: 13px;
+        }
+
+            .message.show {
+                display: flex;
+            }
+
+        .error-message {
+            background: #fff1f1;
+            border: 1px solid #ffd1d1;
+            color: #b42318;
+        }
+
+        .success-message {
+            background: #eefbf3;
+            border: 1px solid #c9efd8;
+            color: #18794e;
+        }
+
+        .back-login {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 13px;
+            color: #777783;
+        }
+
+            .back-login a {
+                color: #5b439b;
+                font-weight: 700;
+                text-decoration: none;
+            }
+
+                .back-login a:hover {
+                    text-decoration: underline;
+                }
+
+        @media (max-width: 800px) {
+
+            .register-wrapper {
+                grid-template-columns: 1fr;
+                max-width: 520px;
+            }
+
+            .brand-panel {
+                display: none;
+            }
+
+            .form-panel {
+                padding: 40px 30px;
+            }
+        }
+
+        @media (max-width: 450px) {
+
+            body {
+                padding: 15px;
+            }
+
+            .form-panel {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="register-wrapper">
+
+
+        <!-- LEFT PANEL -->
+
+        <div class="brand-panel">
+
+            <div class="brand-content">
+
+                <div class="logo">
+
+                    <i class="fa-solid fa-user-plus"></i>
+
+                </div>
+
+
+                <h1>
+
+                    IT Help Desk
+
+                    <span>
+                        Create Account
+                    </span>
+
+                </h1>
+
+
+                <p class="brand-description">
+
+                    Create your account to access
+                    the IT Help Desk Management System.
+
+                </p>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+
+                        <i class="fa-solid fa-ticket"></i>
+
+                    </div>
+
+                    <span>
+                        Manage support tickets
+                    </span>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+
+                        <i class="fa-solid fa-users"></i>
+
+                    </div>
+
+                    <span>
+                        Manage users and technicians
+                    </span>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+
+                        <i class="fa-solid fa-chart-line"></i>
+
+                    </div>
+
+                    <span>
+                        Access support reports
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT PANEL -->
+
+        <div class="form-panel">
+
+            <div class="form-container">
+
+
+                <div class="form-header">
+
+                    <h2>
+                        Create Account
+                    </h2>
+
+                    <p>
+                        Enter your details below to create your account.
+                    </p>
+
+                </div>
+
+
+                <!-- ERROR -->
+
+                <div id="registerError"
+                     class="message error-message">
+
+                    <i class="fa-solid fa-circle-exclamation"></i>
+
+                    <span id="registerErrorText"></span>
+
+                </div>
+
+
+                <!-- SUCCESS -->
+
+                <div id="registerSuccess"
+                     class="message success-message">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    <span id="registerSuccessText"></span>
+
+                </div>
+
+
+                <!-- REGISTRATION FORM -->
+
+                <form id="registerForm">
+
+
+                    <!-- NAME -->
+
+                    <div class="form-group">
+
+                        <label class="form-label"
+                               for="registerName">
+
+                            Full Name
+
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-regular fa-user input-icon">
+                            </i>
+
+
+                            <input type="text"
+                                   id="registerName"
+                                   class="form-input"
+                                   placeholder="Enter your full name"
+                                   autocomplete="name"
+                                   required>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label class="form-label"
+                               for="registerEmail">
+
+                            Email Address
+
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-regular fa-envelope input-icon">
+                            </i>
+
+
+                            <input type="email"
+                                   id="registerEmail"
+                                   class="form-input"
+                                   placeholder="Enter your email"
+                                   autocomplete="email"
+                                   required>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label class="form-label"
+                               for="registerPassword">
+
+                            Password
+
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-solid fa-lock input-icon">
+                            </i>
+
+
+                            <input type="password"
+                                   id="registerPassword"
+                                   class="form-input"
+                                   placeholder="Minimum 6 characters"
+                                   autocomplete="new-password"
+                                   required>
+
+
+                            <button type="button"
+                                    id="toggleRegisterPassword"
+                                    class="password-toggle">
+
+                                <i class="fa-regular fa-eye"></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CONFIRM PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label class="form-label"
+                               for="confirmPassword">
+
+                            Confirm Password
+
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-solid fa-lock input-icon">
+                            </i>
+
+
+                            <input type="password"
+                                   id="confirmPassword"
+                                   class="form-input"
+                                   placeholder="Re-enter your password"
+                                   autocomplete="new-password"
+                                   required>
+
+
+                            <button type="button"
+                                    id="toggleConfirmPassword"
+                                    class="password-toggle">
+
+                                <i class="fa-regular fa-eye"></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- BUTTON -->
+
+                    <button type="submit"
+                            id="registerButton"
+                            class="primary-button">
+
+                        <span id="registerButtonText">
+                            Create Account
+                        </span>
+
+                    </button>
+
+
+                </form>
+
+
+                <!-- BACK TO LOGIN -->
+
+                <div class="back-login">
+
+                    Already have an account?
+
+                    <a href="login.html">
+                        Sign In
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="registration.js"></script>
+
+</body>
+
+</html>
